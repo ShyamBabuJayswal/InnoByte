@@ -38,7 +38,7 @@ const Footer = () => {
 
 
     return (
-        <div className='md:mx-10'>
+        <div className='md:mx-10 -mt-20'>
             <div className='flex flex-col md:flex-row gap-7 my-10 mt-40 text-sm'>
                 {/*-----Left Section------ */}
                 <div className='flex-1'>
