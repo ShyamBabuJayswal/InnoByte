@@ -7,9 +7,9 @@ const Home = () => {
       className="h-[80vh] sm:h-[90vh] md:h-screen lg:h-[110vh] bg-cover bg-center -mt-5"
       style={{
         backgroundImage: `url(${header})`,
-        backgroundPosition: 'center', // Ensure the image is centered
-        backgroundRepeat: 'no-repeat', // Prevent repeating the image
-        backgroundSize: 'cover' // Ensure the image covers the entire div
+        backgroundPosition: 'center', 
+        backgroundRepeat: 'no-repeat', 
+        backgroundSize: 'cover' 
       }}
     >
      <p className='text-2xl font-semibold text-gray-800 leading-relaxed ml-5'> 
