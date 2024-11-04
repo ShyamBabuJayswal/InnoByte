@@ -38,7 +38,7 @@ const Footer = () => {
 
 
     return (
-        <div className='md:mx-10 -mt-20'>
+        <div className='md:mx-5 -mt-20 bg-primary'>
             <div className='flex flex-col md:flex-row gap-7 my-10 mt-40 text-sm'>
                 {/*-----Left Section------ */}
                 <div className='flex-1'>
@@ -49,7 +49,7 @@ const Footer = () => {
                     {/* Book Now Button */}
                     <button
                         onClick={handleBookNowClick}
-                        className="bg-primary text-white font-semibold text-base py-2 px-4 mt-5 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+                        className="bg-primary text-white font-semibold px-4 mt-5 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  ml-5 py-3  hover:bg-gray-600 text-lg md:text-xl"
                     >
                         Book Now
                     </button>
