@@ -1,82 +1,41 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import cancel from "../assets/cancel_icon.svg";
+import { AppContext } from '../context/AppContext';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(true);
   
-  const handleBookNowClick = () => {
-    window.open('https://api.whatsapp.com/send?phone=919007062180', '_blank');
-  };
+  const { handleBookNowClick } = useContext(AppContext);
 
   return (
     <div className="flex items-center justify-between text-lg py-4 mb-5 border-b border-b-gray-400">
       {/* Logo */}
       <img 
         onClick={() => navigate('/')} 
-        className='bg-primary w-44 cursor-pointer' 
+        className="bg-primary w-44 cursor-pointer" 
         src={logo} 
         alt="Logo" 
       />
 
       {/* Desktop Menu */}
       <ul className="hidden md:flex items-center gap-10 font-medium justify-center w-full">
-      <NavLink to='/' className={({ isActive }) => (isActive ? "active py-1 cursor-pointer " : "py-1 cursor-pointer ")}>
-          {({ isActive }) => (
-            <>
-              Home
-              <hr className={`${isActive ? "block" : "hidden"} w-full mt-1 bg-primary h-1`} />
-            </>
-          )}
-        </NavLink>
-      
-        
-        <NavLink to='/about' className={({ isActive }) => (isActive ? "active py-1 cursor-pointer" : "py-1 cursor-pointer")}>
-          {({ isActive }) => (
-            <>
-              About
-              <hr className={`${isActive ? "block" : "hidden"} w-full mt-1 bg-primary h-1`} />
-            </>
-          )}
-        </NavLink>
-        
-        <NavLink to='/services' className={({ isActive }) => (isActive ? "active py-1 cursor-pointer" : "py-1 cursor-pointer")}>
-          {({ isActive }) => (
-            <>
-              Services
-              <hr className={`${isActive ? "block" : "hidden"} w-full mt-1 bg-primary h-1`} />
-            </>
-          )}
-        </NavLink>
-        
-        <NavLink to='/rooms' className={({ isActive }) => (isActive ? "active py-1 cursor-pointer" : "py-1 cursor-pointer")}>
-          {({ isActive }) => (
-            <>
-              Rooms
-              <hr className={`${isActive ? "block" : "hidden"} w-full mt-1 bg-primary h-1`} />
-            </>
-          )}
-        </NavLink>
-        
-        <NavLink to='/gallary' className={({ isActive }) => (isActive ? "active py-1 cursor-pointer" : "py-1 cursor-pointer")}>
-          {({ isActive }) => (
-            <>
-              Gallary
-              <hr className={`${isActive ? "block" : "hidden"} w-full mt-1 bg-primary h-1`} />
-            </>
-          )}
-        </NavLink>
-        
-        <NavLink to='/contact' className={({ isActive }) => (isActive ? "active py-1 cursor-pointer" : "py-1 cursor-pointer")}>
-          {({ isActive }) => (
-            <>
-              Contact
-              <hr className={`${isActive ? "block" : "hidden"} w-full mt-1 bg-primary h-1`} />
-            </>
-          )}
-        </NavLink>
+        {['/', '/about', '/services', '/rooms', '/gallary', '/contact'].map((path, index) => (
+          <NavLink 
+            key={index} 
+            to={path} 
+            className={({ isActive }) => (isActive ? "active py-1 cursor-pointer" : "py-1 cursor-pointer")}
+          >
+            {({ isActive }) => (
+              <>
+                {path === '/' ? 'Home' : path.substring(1).charAt(0).toUpperCase() + path.slice(2)}
+                <hr className={`${isActive ? "block" : "hidden"} w-full mt-1 bg-primary h-1`} />
+              </>
+            )}
+          </NavLink>
+        ))}
       </ul>
 
       {/* Book Now Button */}
@@ -93,7 +52,6 @@ const Navbar = () => {
           onClick={() => setShowMenu(!showMenu)}
           className="text-xl focus:outline-none"
         >
-          {/* Hamburger Icon */}
           {showMenu ? (
             <img src={cancel} alt="Close Menu" className="w-7" />
           ) : (
@@ -132,47 +90,21 @@ const Navbar = () => {
         </div>
         
         <ul className="flex flex-col items-center gap-5 mt-10 text-lg font-medium">
-          <li className="relative group w-full text-center">
-            <NavLink to="/" onClick={() => setShowMenu(false)} className="py-2 block">
-              Home
-            </NavLink>
-            <hr className="absolute left-1/2 transform -translate-x-1/2 w-0 transition-all duration-300 bg-primary h-1 group-hover:w-1/6" />
-          </li>
-          
-          <li className="relative group w-full text-center">
-            <NavLink to="/about" onClick={() => setShowMenu(false)} className="py-2 block">
-              About
-            </NavLink>
-            <hr className="absolute left-1/2 transform -translate-x-1/2 w-0 transition-all duration-300 bg-primary h-1 group-hover:w-1/6" />
-          </li>
-          
-          <li className="relative group w-full text-center">
-            <NavLink to="/services" onClick={() => setShowMenu(false)} className="py-2 block">
-              Services
-            </NavLink>
-            <hr className="absolute left-1/2 transform -translate-x-1/2 w-0 transition-all duration-300 bg-primary h-1 group-hover:w-1/6" />
-          </li>
-          
-          <li className="relative group w-full text-center">
-            <NavLink to="/rooms" onClick={() => setShowMenu(false)} className="py-2 block">
-              Rooms
-            </NavLink>
-            <hr className="absolute left-1/2 transform -translate-x-1/2 w-0 transition-all duration-300 bg-primary h-1 group-hover:w-1/6" />
-          </li>
-          
-          <li className="relative group w-full text-center">
-            <NavLink to="/gallery" onClick={() => setShowMenu(false)} className="py-2 block">
-              Gallery
-            </NavLink>
-            <hr className="absolute left-1/2 transform -translate-x-1/2 w-0 transition-all duration-300 bg-primary h-1 group-hover:w-1/6" />
-          </li>
-          
-          <li className="relative group w-full text-center">
-            <NavLink to="/contact" onClick={() => setShowMenu(false)} className="py-2 block">
-              Contact
-            </NavLink>
-            <hr className="absolute left-1/2 transform -translate-x-1/2 w-0 transition-all duration-300 bg-primary h-1 group-hover:w-1/6" />
-          </li>
+          {['/', '/about', '/services', '/rooms', '/gallary', '/contact'].map((path, index) => (
+            <li key={index} className="relative group w-full text-center">
+              <NavLink 
+                to={path} 
+                onClick={() => setShowMenu(false)} 
+                className={({ isActive }) => `py-2 block ${isActive ? 'text-primary font-semibold' : ''}`}
+              >
+                {path === '/' ? 'Home' : path.substring(1).charAt(0).toUpperCase() + path.slice(2)}
+              </NavLink>
+              <hr 
+                className={`absolute left-1/2 transform -translate-x-1/2 transition-all duration-300 bg-primary h-1 
+                ${window.location.pathname === path ? 'w-1/6' : 'w-0'} group-hover:w-1/6`} 
+              />
+            </li>
+          ))}
         </ul>
       </div>
     </div>

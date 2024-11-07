@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { AppContext } from '../context/AppContext';
+
 
 const Contact = () => {
+  const { openInstagram, openTwitter, openYoutube, openGoogleMap } = useContext(AppContext);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -18,8 +22,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add backend or email service integration here.
-
     console.log(formData);
     setResponseMessage("Your message has been sent!");
     setFormData({
@@ -37,15 +39,13 @@ const Contact = () => {
         <p className="font-semibold text-xl text-gray-600 ml-10">CONTACT INFO</p>
         
         <div className="text-gray-500 flex items-center gap-2 mt-10">
-          <FaMapMarkerAlt className="text-gray-600 text-xl" />
-          <a 
-            href="https://www.google.com/maps/search/?api=1&query=Beside+Barshal+Water+Tank,+Manpur,+Barhanti,+West+Bengal+723156" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="text-lg text-gray-600 hover:underline"
+          <FaMapMarkerAlt className="text-gray-600 text-2xl" />
+          <button 
+            onClick={openGoogleMap}
+            className=" -ml-2 mt-5 text-lg text-gray-600 hover:underline"
           >
             Beside Barshal Water Tank, Manpur, Barhanti, West Bengal 723156
-          </a>
+          </button>
         </div>
         
         <div className="text-gray-600 flex items-center gap-2">
@@ -65,15 +65,15 @@ const Contact = () => {
         
         {/* Social Media Icons Row */}
         <div className="flex space-x-4 mt-[30px]">
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+          <button onClick={openInstagram}>
             <FaInstagram className="text-gray-600 hover:text-gray-500 text-2xl" />
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          </button>
+          <button onClick={openTwitter}>
             <FaTwitter className="text-gray-600 hover:text-gray-500 text-2xl" />
-          </a>
-          <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+          </button>
+          <button onClick={openYoutube}>
             <FaYoutube className="text-gray-600 hover:text-gray-500 text-2xl" />
-          </a>
+          </button>
         </div>
       </div>
 

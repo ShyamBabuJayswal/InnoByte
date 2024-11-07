@@ -1,9 +1,9 @@
+import { useContext } from 'react';
 import out from '../assets/out.jpg';
+import { AppContext } from '../context/AppContext';
 
 const About = () => {
-  const handleBookNowClick = () => {
-    window.open('https://api.whatsapp.com/send?phone=919007062180', '_blank');
-  };
+  const {handleBookNowClick} =useContext(AppContext);
   return (
     <div className="flex flex-col md:flex-row items-center md:items-start p-6 md:p-12">
       <div className="w-full md:w-1/2 mb-4 md:mb-0 md:ml-10 -mt-5">

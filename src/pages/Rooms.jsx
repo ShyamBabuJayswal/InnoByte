@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import large from "../assets/large.jpg";
 import small from "../assets/small.jpg";
+import { AppContext } from '../context/AppContext';
 
 const Rooms = () => {
+  const {handleBookNowClick} =useContext(AppContext);
   return (
-    <div className="p-6 md:p-12">
+    <div className="p-6 md:p-12 -mt-10">
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800">OUR LIVING ROOM</h1>
         <p className="text-lg md:text-xl text-gray-600 mt-2">The Most Memorable Rest Time Starts Here.</p>
@@ -20,7 +22,7 @@ const Rooms = () => {
           <p className="text-gray-700 mt-4 font-medium">
             Starting from <span className="text-primary font-bold">Rs. 1000/night</span>
           </p>
-          <button className="bg-primary mt-5 text-white py-3 px-6 rounded-lg hover:bg-gray-600 text-lg md:text-xl">
+          <button onClick={handleBookNowClick} className="bg-primary mt-5 text-white py-3 px-6 rounded-lg hover:bg-gray-600 text-lg md:text-xl">
             Book Now
           </button>
         </div>
@@ -34,7 +36,7 @@ const Rooms = () => {
           <p className="text-gray-700 mt-4 font-medium">
             Starting from <span className="text-primary font-bold">Rs. 1500/night</span>
           </p>
-          <button className="bg-primary mt-5 text-white py-3 px-6 rounded-lg hover:bg-gray-600 text-lg md:text-xl">
+          <button onClick={handleBookNowClick} className="bg-primary mt-5 text-white py-3 px-6 rounded-lg hover:bg-gray-600 text-lg md:text-xl">
             Book Now
           </button>
         </div>

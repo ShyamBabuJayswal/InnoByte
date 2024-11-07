@@ -3,7 +3,7 @@ import palash from '../assets/palash.webp';
 
 const Services = () => {
   return (
-    <div className="p-6 md:p-12 bg-gray-50 rounded-lg shadow-lg">
+    <div className="p-6 md:p-12 bg-gray-50 rounded-lg shadow-lg -mt-5">
       {/* Services Text Section */}
       <div className="w-full text-center md:text-left mb-8">
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">Our Services</h1>
